@@ -13,21 +13,21 @@ public class HomePage {
     private final WebDriverWait wait;
 
     public HomePage() {
-        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
     }
 
     public String getTitle() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated
+        return this.wait.until(ExpectedConditions.visibilityOfElementLocated
                 (AppiumBy.iOSClassChain("**/XCUIElementTypeStaticText[`label == \"WEBDRIVER\"`]"))).getText();
     }
 
-    void openMenu(String menuName) {
+    public void openMenu(final String menuName) {
         getDriver().findElement(AppiumBy.accessibilityId(menuName)).click();
 
     }
 
     public String tagLine() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+        return this.wait.until(ExpectedConditions.visibilityOfElementLocated(
                 AppiumBy.accessibilityId("Demo app for the appium-boilerplate"))).getText();
     }
 

@@ -16,21 +16,24 @@ public class ExtentReportListener implements ITestListener {
 
     public void onTestSuccess(ITestResult result) {
         Log.info(result.getMethod().getMethodName() + " Test Passed");
-        extentTest.pass(result.getMethod() + "Test Passed", MediaEntityBuilder
+        extentTest.pass(result.getMethod() + "Test Passed"
+        , MediaEntityBuilder
                 .createScreenCaptureFromBase64String(MobileTestUtils.captureScreenshot())
                 .build());
     }
 
     public void onTestFailure(ITestResult result) {
         Log.error(result.getMethod().getMethodName() + " Test Failed");
-        extentTest.fail(result.getMethod().getMethodName() + "Test Failed " + result.getThrowable().getMessage(), MediaEntityBuilder
+        extentTest.fail(result.getMethod().getMethodName() + "Test Failed " + result.getThrowable().getMessage()
+        , MediaEntityBuilder
                 .createScreenCaptureFromBase64String(MobileTestUtils.captureScreenshot())
                 .build());
     }
 
     public void onTestSkipped(ITestResult result) {
         Log.info(result.getMethod().getMethodName() + " Test Skipped");
-        extentTest.skip(result.getMethod().getMethodName() + "Test Skipped " + result.getThrowable().getMessage(), MediaEntityBuilder
+        extentTest.skip(result.getMethod().getMethodName() + "Test Skipped " + result.getThrowable().getMessage()
+                , MediaEntityBuilder
                 .createScreenCaptureFromBase64String(MobileTestUtils.captureScreenshot())
                 .build());
     }
